@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require medium-editor
 //= require bootstrap-sprockets
@@ -23,9 +24,11 @@
 
 $(document).ready(function () {
   new Customizer();
+
   var editor = new MediumEditor('.editable');
+
   $('.js-terms-list').on('cocoon:after-insert', function(e, insertedItem) {
-    new MediumEditor(insertedItem.find('.js-agreement-text'), {
+    new MediumEditor(insertedItem.find('.js-agreement-text')[0], {
       diffLeft: 25,
       diffTop: 10,
       firstHeader: 'h1',
@@ -34,6 +37,19 @@ $(document).ready(function () {
       staticToolbar: true,
       stickyToolbar: true
     });
-    console.log(insertedItem);
+  });
+
+  $(".js-agreement-form").submit(function(ev) {
+    ev.preventDefault();
+
+    $('.js-agreement-item').each(function (ind, itm) {
+      $(itm).find('.js-agreement-text-hidden').val(
+        $(itm).find('.js-agreement-text').html()
+      );
+    });
+
+    // var contentObj = editor.serialize();
+    // $(".js-content-hidden").val(contentObj['element-0'].value);
+    this.submit();
   });
 });

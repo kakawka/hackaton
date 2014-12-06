@@ -11,7 +11,7 @@ nav.navbar.navbar-default role="navigation"
         |Commit my EULA
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
-        li.active
+        li
           a href="#" FAQ
         li
           = link_to 'Documentation', documentation_path
@@ -22,7 +22,7 @@ nav.navbar.navbar-default role="navigation"
           li
             = link_to 'Sign Up', new_registration_path('user')
         - else
-          li
+          li class="#{ 'active' if controller.controller_name == 'license_agreements' }"
             = link_to  "My EULA", license_agreements_path
           li
             = link_to  "Profile", edit_user_registration_path

@@ -5,7 +5,7 @@ table.table
     tr
       th Name
       th Domain
-      th User
+      th Parts
       th
       th
       th
@@ -15,8 +15,7 @@ table.table
       tr
         td = license_agreement.name
         td = license_agreement.domain
-        td = license_agreement.user.name
-        td = link_to 'Show', license_agreement
+        td = license_agreement.license_agreement_terms.size
         td = link_to 'Edit', edit_license_agreement_path(license_agreement)
         td = link_to 'Destroy', license_agreement, data: {:confirm => 'Are you sure?'}, :method => :delete
 
