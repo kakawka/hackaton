@@ -21,6 +21,7 @@
 //= require tinycolor-0.9.15.min
 //= require pick-a-color
 //= require customizer
+//= require ufo
 
 var ready = function () {
   new Customizer();

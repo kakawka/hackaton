@@ -21,7 +21,8 @@ class @EulaHelper
     request.onload = () ->
       if (request.status >= 200 && request.status < 400)
         data = JSON.parse(request.responseText)
-        success.call(scope, data)
+        if success
+          success.call(scope, data)
       else
         if fail
           fail.call(scope)
@@ -29,6 +30,26 @@ class @EulaHelper
     request.onerror = () ->
       if fail
         fail.call(scope)
+
+    request.send()
+    true
+
+  @sendData: (url) ->
+    request = new XMLHttpRequest()
+    request.open('POST', url, true)
+
+    # request.onload = () ->
+    #   if (request.status >= 200 && request.status < 400)
+    #     data = JSON.parse(request.responseText)
+    #     if success
+    #       success.call(scope, data)
+    #   else
+    #     if fail
+    #       fail.call(scope)
+
+    # request.onerror = () ->
+    #   if fail
+    #     fail.call(scope)
 
     request.send()
     true

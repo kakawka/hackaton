@@ -1,3 +1,4 @@
+@import "font-awesome";
 @import "medium-editor";
 @import "medium-editor-theme";
 @import "variables";
@@ -22,4 +23,20 @@
 
 .auto-height {
   height: auto;
+}
+
+.ufo {
+  position: absolute;
+  background: inline("ufo.png") no-repeat;
+  width: image-width("ufo.png");
+  height: image-height("ufo.png");
+  top: 0;
+  left: 0;
+}
+
+.benefits {
+  .fa {
+    font-size: 140px;
+    margin-bottom: 20px;
+  }
 }
