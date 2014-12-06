@@ -1,4 +1,5 @@
 #= require eula/eula_helper
+#= require eula/eula_styler
 #= require eula/eula_window
 
 class @Eula

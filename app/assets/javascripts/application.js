@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require tinycolor-0.9.15.min
+//= require pick-a-color
+//= require customizer
+
+$(document).ready(function () {
+  new Customizer();
+});

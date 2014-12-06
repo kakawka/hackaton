@@ -1,6 +1,8 @@
 @import "variables";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "color_changer";
+@import "pick-a-color-1.2.3.min";
 
 .navbar-brand {
   img {
@@ -9,4 +11,8 @@
     position: relative;
     top: -2px;
   }
+}
+
+.full-width {
+  width: 100%;
 }

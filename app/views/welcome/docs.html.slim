@@ -1,0 +1,22 @@
+h1 Create EULA in your account
+
+h1 Install code to your site
+pre
+  = "<script type=\"text/javascript\" src=\"http://..../eula.js\"></script>"
+
+h1 Integrate our code with your site logic
+pre
+  = "$(document).ready(function () {\n\
+      var eula = new Eula('localhost', null);\n\
+      eula.show('test', {\n\
+        accept: function () {\n\
+          alert('accepted!');\n\
+        },\n\
+        decline: function () {\n\
+          alert('declined!');\n\
+        },\n\
+        hide: function () {\n\
+          alert('just close the window');\n\
+        }\n\
+      });\n\
+    });"
