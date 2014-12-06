@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206095114) do
+ActiveRecord::Schema.define(version: 20141206151753) do
 
   create_table "license_agreement_terms", force: true do |t|
     t.string   "code"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20141206095114) do
   end
 
   add_index "license_agreements", ["user_id"], name: "index_license_agreements_on_user_id", using: :btree
+
+  create_table "questions", force: true do |t|
+    t.string   "question"
+    t.text     "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "term_acceptances", force: true do |t|
     t.integer  "visitor_id"

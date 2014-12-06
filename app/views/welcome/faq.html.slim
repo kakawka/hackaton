@@ -1,0 +1,12 @@
+h3 Frequently asked questions
+#accordion.panel-group
+  - @questions.each_with_index do |question, i|
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a data-parent="#accordion" data-toggle="collapse" href="#collapse-#{question.id}"
+            - i += 1
+            = "#{i}. #{question.question}"
+      .panel-collapse.collapse id="collapse-#{question.id}"
+        .panel-body
+          = raw question.answer

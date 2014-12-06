@@ -10,6 +10,7 @@ gem 'omniauth-facebook'
 gem 'bootstrap-sass'
 gem 'medium-editor-rails'
 gem "cocoon"
+gem "dogstatsd-ruby"
 
 # Use mysql as the database for Active Record
 gem 'mysql2'
