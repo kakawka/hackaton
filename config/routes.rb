@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  get '/demo' => 'markup#demo'
-  get '/docs' => 'welcome#docs', :as => :documentation
-  get '/color_changer' => 'welcome#color_changer'
+  namespace :api do
+    get '/terms' => 'license_agreements#terms'
+  end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations", }
 
-  root 'welcome#index'
+  get '/demo' => 'markup#demo', :as => :demo
+  get '/docs' => 'welcome#docs', :as => :documentation
+  get '/color_changer' => 'welcome#color_changer'
   resources :license_agreements, :except => [:show]
+
+  root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

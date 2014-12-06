@@ -13,6 +13,8 @@ nav.navbar.navbar-default role="navigation"
       ul.nav.navbar-nav
         li
           a href="#" FAQ
+        li class="#{ 'active' if current_page? demo_path }"
+          = link_to 'Demo', demo_path
         li
           = link_to 'Documentation', documentation_path
       ul.nav.navbar-nav.navbar-right
