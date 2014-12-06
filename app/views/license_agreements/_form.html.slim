@@ -15,9 +15,10 @@
   h3 License agreement terms
 
   #tasks
-  = f.fields_for :license_agreement_terms do |lat|
-    = render 'license_agreement_term_fields', :f => lat
-  .links
-    = link_to_add_association 'add terms', f, :license_agreement_terms
+  .js-terms-list
+    = f.fields_for :license_agreement_terms do |lat|
+      = render 'license_agreement_term_fields', :f => lat
+    .links
+      = link_to_add_association 'add terms', f, :license_agreement_terms
   br
   = f.submit 'Save', class: "btn btn-primary"

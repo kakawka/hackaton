@@ -23,4 +23,17 @@
 
 $(document).ready(function () {
   new Customizer();
+  var editor = new MediumEditor('.editable');
+  $('.js-terms-list').on('cocoon:after-insert', function(e, insertedItem) {
+    new MediumEditor(insertedItem.find('.js-agreement-text'), {
+      diffLeft: 25,
+      diffTop: 10,
+      firstHeader: 'h1',
+      secondHeader: 'h2',
+      delay: 1000,
+      staticToolbar: true,
+      stickyToolbar: true
+    });
+    console.log(insertedItem);
+  });
 });

@@ -8,7 +8,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'bootstrap-sass'
-gem 'medium-editor-rails'
+# gem 'medium-editor-rails'
 gem "cocoon"
 
 # Use mysql as the database for Active Record

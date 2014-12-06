@@ -4,7 +4,8 @@
     = f.text_field :code, class: "form-control"
   .form-group.editable
     = f.label :text
-    = f.text_area :text, class: "form-control"
+    .form-control.js-agreement-text.auto-height
+    / # = f.text_area :text, class: "form-control js-agreement-text"
   .form-group
     = f.label :sort
     = f.text_field :sort, class: "form-control"
