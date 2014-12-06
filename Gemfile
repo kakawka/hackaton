@@ -11,6 +11,7 @@ gem 'bootstrap-sass'
 # gem 'medium-editor-rails'
 gem "cocoon"
 gem "dogstatsd-ruby"
+gem 'font-awesome-rails'
 
 # Use mysql as the database for Active Record
 gem 'mysql2'
