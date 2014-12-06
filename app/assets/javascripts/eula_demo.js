@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var eula = new Eula('localhost', null);
+  var eula = new Eula('localhost', '');
 
   eula.show('STARTING', {
     accept: function () {

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     get '/terms' => 'license_agreements#terms'
+    post '/accept' => 'license_agreements#accept'
   end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations", }

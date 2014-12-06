@@ -1,5 +1,6 @@
 class @EulaWindow
-  constructor: () ->
+  constructor: (eulaObject) ->
+    @eulaObject = eulaObject
     @underlay = document.createElement('div')
     @window = document.createElement('div')
     @window.innerHTML = """
@@ -20,18 +21,21 @@ class @EulaWindow
   decline: () ->
     EulaHelper.removeClass(@window, '-eula-visible')
     EulaHelper.removeClass(@underlay, '-eula-visible')
+    @eulaObject.decline()
     if @current_callbacks.decline
       @current_callbacks.decline.call(@callbacks_scope)
 
   accept: () ->
     EulaHelper.removeClass(@window, '-eula-visible')
     EulaHelper.removeClass(@underlay, '-eula-visible')
+    @eulaObject.accept()
     if @current_callbacks.accept
       @current_callbacks.accept.call(@callbacks_scope)
 
   hide: () ->
     EulaHelper.removeClass(@window, '-eula-visible')
     EulaHelper.removeClass(@underlay, '-eula-visible')
+    @eulaObject.hide()
     if @current_callbacks.hide
       @current_callbacks.hide.call(@callbacks_scope)
 
