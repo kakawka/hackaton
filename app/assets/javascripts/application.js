@@ -16,6 +16,7 @@
 //= require medium-editor
 //= require bootstrap-sprockets
 //= require cocoon
+//= require bootstrap
 
 $(function() {
   var editor = new MediumEditor('.editable');

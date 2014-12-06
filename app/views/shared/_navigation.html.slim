@@ -1,0 +1,26 @@
+nav.navbar.navbar-default role="navigation"
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href="/"
+        img alt="Brand" src="/assets/logo.png"
+        |Commit my EULA
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.active
+          a href="#" FAQ
+        li
+          a href="#" Documentation
+      ul.nav.navbar-nav.navbar-right
+        - unless user_signed_in?
+          li
+            = link_to 'Login', new_session_path('user')
+          li
+            = link_to 'Sign Up', new_registration_path('user')
+        - else
+          li
+            a href="#"  My EULA
