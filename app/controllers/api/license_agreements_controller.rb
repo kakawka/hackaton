@@ -31,8 +31,17 @@ class Api::LicenseAgreementsController < ApplicationController
   end
 
   def load_agreement
-    @license_agreement = LicenseAgreement.find_by_domain(
-      Addressable::URI.parse(request.referer).host
-    )
+    host = Addressable::URI.parse(request.referer).host
+    @license_agreement = LicenseAgreement.find_by_domain(host)
+    unless @license_agreement.nil?
+      unless request.port == 80
+        headers['Access-Control-Allow-Origin'] = "http://#{host}:#{request.port}"
+      else
+        headers['Access-Control-Allow-Origin'] = "http://#{host}"
+      end
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+      headers['Access-Control-Request-Method'] = '*'
+      headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    end
   end
 end
