@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/demo' => 'markup#demo', :as => :demo
   get '/docs' => 'welcome#docs', :as => :documentation
   get '/color_changer' => 'welcome#color_changer', :as => :customization
-  resources :license_agreements, :except => [:show]
+  resources :license_agreements
 
   root 'welcome#index'
   get '/faq' => 'welcome#faq'

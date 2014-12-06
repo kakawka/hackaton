@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206151753) do
+ActiveRecord::Schema.define(version: 20141206192223) do
+
+  create_table "license_agreement_acceptances", force: true do |t|
+    t.integer  "visitor_id"
+    t.integer  "linense_agreement_id"
+    t.boolean  "accepted"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "license_agreement_acceptances", ["linense_agreement_id"], name: "index_license_agreement_acceptances_on_linense_agreement_id", using: :btree
+  add_index "license_agreement_acceptances", ["visitor_id"], name: "index_license_agreement_acceptances_on_visitor_id", using: :btree
 
   create_table "license_agreement_terms", force: true do |t|
     t.string   "code"
@@ -45,7 +56,6 @@ ActiveRecord::Schema.define(version: 20141206151753) do
     t.integer  "visitor_id"
     t.integer  "license_agreement_term_id"
     t.boolean  "accepted"
-    t.datetime "accepted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

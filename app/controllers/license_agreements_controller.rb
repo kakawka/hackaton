@@ -11,7 +11,7 @@ class LicenseAgreementsController < ApplicationController
   # GET /license_agreements/1.json
   def show
     @license_agreements_term = @license_agreement.license_agreement_terms.order('sort')
-    redirect_to license_agreements_path unless @license_agreement.user_id == current_user.id
+    redirect_to license_agreements_path unless !@license_agreement || @license_agreement.user_id == current_user.id
   end
 
   # GET /license_agreements/new
