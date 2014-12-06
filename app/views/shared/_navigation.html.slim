@@ -17,6 +17,8 @@ nav.navbar.navbar-default role="navigation"
           = link_to 'Demo', demo_path
         li
           = link_to 'Documentation', documentation_path
+        li class="#{ 'active' if current_page? customization_path }"
+          = link_to 'Customization', customization_path
       ul.nav.navbar-nav.navbar-right
         - unless user_signed_in?
           li

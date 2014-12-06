@@ -22,7 +22,7 @@
 //= require pick-a-color
 //= require customizer
 
-$(document).ready(function () {
+var ready = function () {
   new Customizer();
 
   var editor = new MediumEditor('.editable');
@@ -52,4 +52,7 @@ $(document).ready(function () {
     // $(".js-content-hidden").val(contentObj['element-0'].value);
     this.submit();
   });
-});
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
