@@ -1,14 +1,28 @@
 $(document).ready(function () {
   var eula = new Eula('localhost', null);
-  eula.show('CODE1', {
+
+  eula.show('STARTING', {
     accept: function () {
-      alert('accepted!');
+      console.log('now continue');
     },
     decline: function () {
-      alert('declined!');
+      alert('You declined the EULA and not will be redirected to index page');
+      location.href = '/';
     },
     hide: function () {
-      alert('just close the window');
+      alert('You declined the EULA and not will be redirected to index page');
+      location.href = '/';
     }
+  });
+
+  $('.js-show-instructions').click(function (ev) {
+    var me = this;
+
+    eula.show('INSTRUCTIONS', {
+      accept: function () {
+        ufoStart();
+        // me.next().removeClass('hidden');
+      }
+    });
   });
 });

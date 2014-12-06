@@ -33,4 +33,4 @@ class @Eula
         @realShow(code, callbacks)
       @load rs, this
     else
-      @realShow(code)
+      @realShow(code, callbacks)

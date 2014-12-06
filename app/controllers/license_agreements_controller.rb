@@ -42,7 +42,7 @@ class LicenseAgreementsController < ApplicationController
   def update
     respond_to do |format|
       if @license_agreement.update(license_agreement_params)
-        format.html { redirect_to @license_agreement, notice: 'License agreement was successfully updated.' }
+        format.html { redirect_to license_agreements_path, notice: 'License agreement was successfully updated.' }
         format.json { render :show, status: :ok, location: @license_agreement }
       else
         format.html { render :edit }

@@ -18,10 +18,14 @@ class @EulaWindow
     @styler = new EulaStyler()
 
   decline: () ->
+    EulaHelper.removeClass(@window, '-eula-visible')
+    EulaHelper.removeClass(@underlay, '-eula-visible')
     if @current_callbacks.decline
       @current_callbacks.decline.call(@callbacks_scope)
 
   accept: () ->
+    EulaHelper.removeClass(@window, '-eula-visible')
+    EulaHelper.removeClass(@underlay, '-eula-visible')
     if @current_callbacks.accept
       @current_callbacks.accept.call(@callbacks_scope)
 
