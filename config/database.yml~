@@ -1,0 +1,9 @@
+development:
+  adapter: mysql2
+  encoding: utf8mb4
+  collation: utf8mb4_unicode_ci
+  reconnect: false
+  database: hackathon_dev
+  pool: 5
+  username: root
+  password:
