@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get '/demo' => 'markup#demo'
   get '/docs' => 'welcome#docs', :as => :documentation
   get '/color_changer' => 'welcome#color_changer'
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations", }
+
   root 'welcome#index'
+  resources :license_agreements
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206092424) do
+ActiveRecord::Schema.define(version: 20141206095114) do
 
   create_table "license_agreement_terms", force: true do |t|
     t.string   "code"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 20141206092424) do
     t.integer  "sort"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "license_agreement_id"
   end
+
+  add_index "license_agreement_terms", ["license_agreement_id"], name: "index_license_agreement_terms_on_license_agreement_id", using: :btree
 
   create_table "license_agreements", force: true do |t|
     t.string   "name"

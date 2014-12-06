@@ -23,4 +23,8 @@ nav.navbar.navbar-default role="navigation"
             = link_to 'Sign Up', new_registration_path('user')
         - else
           li
-            a href="#"  My EULA
+            = link_to  "My EULA", license_agreements_path
+          li
+            = link_to  "Profile", edit_user_registration_path
+          li
+            = link_to "Sign out", destroy_user_session_path, method: :delete

@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require medium-editor
+//= require bootstrap-sprockets
+//= require cocoon
 //= require bootstrap
 //= require tinycolor-0.9.15.min
 //= require pick-a-color
