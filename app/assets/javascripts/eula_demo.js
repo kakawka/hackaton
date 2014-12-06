@@ -25,4 +25,8 @@ $(document).ready(function () {
       }
     });
   });
+
+  eula.isAccepted('INSTRUCTIONS', function () {
+    ufoStart();
+  });
 });
