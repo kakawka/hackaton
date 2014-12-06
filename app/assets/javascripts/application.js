@@ -13,3 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require medium-editor
+//= require bootstrap-sprockets
+//= require cocoon
+
+$(function() {
+  var editor = new MediumEditor('.editable');
+});

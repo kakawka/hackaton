@@ -1,0 +1,25 @@
+h1 Listing license agreements
+
+table.table
+  thead
+    tr
+      th Name
+      th Domain
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @license_agreements.each do |license_agreement|
+      tr
+        td = license_agreement.name
+        td = license_agreement.domain
+        td = license_agreement.user.name
+        td = link_to 'Show', license_agreement
+        td = link_to 'Edit', edit_license_agreement_path(license_agreement)
+        td = link_to 'Destroy', license_agreement, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New License agreement', new_license_agreement_path
