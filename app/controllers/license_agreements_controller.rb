@@ -4,13 +4,14 @@ class LicenseAgreementsController < ApplicationController
   # GET /license_agreements
   # GET /license_agreements.json
   def index
-    @license_agreements = LicenseAgreement.all
+    @license_agreements = LicenseAgreement.where(user_id: current_user.id)
   end
 
   # GET /license_agreements/1
   # GET /license_agreements/1.json
   def show
     @license_agreements_term = @license_agreement.license_agreement_terms.order('sort')
+    redirect_to license_agreements_path unless @license_agreement.user_id == current_user.id
   end
 
   # GET /license_agreements/new
