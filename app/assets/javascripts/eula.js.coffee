@@ -1,18 +1,25 @@
 #= require eula/eula_helper
+#= require eula/eula_styler
 #= require eula/eula_window
 
 class @Eula
-  constructor: (domain, user_id) ->
+  constructor: (domain, user_id, id) ->
     @domain = domain
     @user_id = user_id
     @window = new EulaWindow()
 
   load: (callback, scope) ->
-    @eulas =
-      'demo': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime amet nulla error delectus suscipit modi libero harum natus, vero odit earum culpa ab excepturi saepe repudiandae vitae! Dolorum, accusamus, ipsa.',
-      'test': '2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas nemo aut quis quia, cumque, nisi blanditiis expedita reiciendis ducimus odit ipsum et, quibusdam. Praesentium, numquam laudantium minus nobis consectetur iusto.'
-    @loaded = true
-    callback.call(scope)
+    me = this
+    if !@loaded
+      succ = (data) ->
+        me.eulas = {}
+        data.terms.map (itm) ->
+          me.eulas[itm.code] = itm.text
+        me.loaded = true
+        callback.call(scope)
+      EulaHelper.getJSON('/api/terms.json?domain=' + @domain, succ, null, this)
+    else
+      callback.call(scope)
 
   realShow: (code, callbacks) ->
     if @eulas[code]

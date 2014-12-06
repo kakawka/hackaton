@@ -1,11 +1,13 @@
-.nested-fields
+.nested-fields.well.js-agreement-item
   .form-group
     = f.label :code
     = f.text_field :code, class: "form-control"
   .form-group.editable
     = f.label :text
-    = f.text_area :text, class: "form-control"
+    .form-control.js-agreement-text.auto-height
+      = raw f.object.text
+    = f.hidden_field :text, :class => 'js-agreement-text-hidden'
+    / # = f.text_area :text, class: "form-control js-agreement-text auto-height"
   .form-group
-    = f.label :sort
-    = f.text_field :sort, class: "form-control"
+    = f.hidden_field :sort, class: "form-control"
   = link_to_remove_association "remove term", f

@@ -1,6 +1,6 @@
 $(document).ready(function () {
   var eula = new Eula('localhost', null);
-  eula.show('test', {
+  eula.show('CODE1', {
     accept: function () {
       alert('accepted!');
     },

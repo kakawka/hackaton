@@ -11,10 +11,14 @@ nav.navbar.navbar-default role="navigation"
         |Commit my EULA
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav
-        li.active
+        li class="#{ 'active' if current_page? faq_path }"
           = link_to "FAQ", faq_path
+        li class="#{ 'active' if current_page? demo_path }"
+          = link_to 'Demo', demo_path
         li
-          a href="#" Documentation
+          = link_to 'Documentation', documentation_path
+        li class="#{ 'active' if current_page? customization_path }"
+          = link_to 'Customization', customization_path
       ul.nav.navbar-nav.navbar-right
         - unless user_signed_in?
           li
@@ -22,7 +26,7 @@ nav.navbar.navbar-default role="navigation"
           li
             = link_to 'Sign Up', new_registration_path('user')
         - else
-          li
+          li class="#{ 'active' if controller.controller_name == 'license_agreements' }"
             = link_to  "My EULA", license_agreements_path
           li
             = link_to  "Profile", edit_user_registration_path

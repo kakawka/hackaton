@@ -5,4 +5,10 @@ class WelcomeController < ApplicationController
   def faq
     @questions = Question.all
   end
+
+  def docs
+  end
+
+  def color_changer
+  end
 end

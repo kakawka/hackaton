@@ -13,3 +13,22 @@ class @EulaHelper
 
   @find: (el, selector) ->
     el.querySelector(selector)
+
+  @getJSON: (url, success, fail, scope) ->
+    request = new XMLHttpRequest()
+    request.open('GET', url, true)
+
+    request.onload = () ->
+      if (request.status >= 200 && request.status < 400)
+        data = JSON.parse(request.responseText)
+        success.call(scope, data)
+      else
+        if fail
+          fail.call(scope)
+
+    request.onerror = () ->
+      if fail
+        fail.call(scope)
+
+    request.send()
+    true

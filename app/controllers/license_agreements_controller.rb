@@ -4,7 +4,7 @@ class LicenseAgreementsController < ApplicationController
   # GET /license_agreements
   # GET /license_agreements.json
   def index
-    @license_agreements = LicenseAgreement.where(user_id: current_user.id)
+    @license_agreements = current_user.license_agreements
   end
 
   # GET /license_agreements/1
@@ -30,11 +30,9 @@ class LicenseAgreementsController < ApplicationController
 
     respond_to do |format|
       if @license_agreement.save
-        format.html { redirect_to @license_agreement, notice: 'License agreement was successfully created.' }
-        format.json { render :show, status: :created, location: @license_agreement }
+        format.html { redirect_to license_agreements_path, notice: 'License agreement was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @license_agreement.errors, status: :unprocessable_entity }
       end
     end
   end
