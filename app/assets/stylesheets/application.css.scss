@@ -1,0 +1,12 @@
+@import "variables";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.navbar-brand {
+  img {
+    display: inline;
+    margin-right: 10px;
+    position: relative;
+    top: -2px;
+  }
+}
