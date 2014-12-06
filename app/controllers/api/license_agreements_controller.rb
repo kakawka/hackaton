@@ -6,8 +6,13 @@ class Api::LicenseAgreementsController < ApplicationController
 
   def terms
     visitor = Visitor.find_or_create(params[:uid])
+    result = {
+      :terms => @license_agreement.license_agreement_terms,
+      :acceptances => visitor.term_acceptances,
+      :uid => visitor.uid
+    }
     respond_to do |format|
-      format.json { render :json => { :terms => @license_agreement.license_agreement_terms, :uid => visitor.uid } }
+      format.json { render :json => result }
     end
   end
 
