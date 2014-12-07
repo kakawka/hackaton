@@ -10,6 +10,13 @@ class @EulaStyler
       accept_button_color_hover: '#286090'
       decline_button_color: '#d9534f'
       decline_button_color_hover: '#c9302c'
+      window_text_color: '#000'
+      accept_button_text_color: '#fff'
+      decline_button_text_color: '#fff'
+    if params
+      for i of params
+        @styles[i] = params[i]
+    console.log(params, @styles)
     @applyCss()
 
   setStyles: (newStyles) ->
@@ -48,6 +55,7 @@ class @EulaStyler
       .eula-window_content {
         padding: 30px 20px 20px 20px;
         font-size: #{@styles.window_font_size};
+        color: #{@styles.window_text_color};
       }
       .eula-window_close {
         text-decoration: none;
@@ -86,6 +94,7 @@ class @EulaStyler
       .eula-window_button.-eula-decline {
         background-color: #{@styles.decline_button_color};
         border-color: #d43f3a;
+        color: #{@styles.decline_button_text_color};
       }
       .eula-window_button.-eula-decline:hover {
         background-color: #{@styles.decline_button_color_hover};
@@ -94,6 +103,7 @@ class @EulaStyler
       .eula-window_button.-eula-accept {
         background-color: #{@styles.accept_button_color};
         border-color: #2e6da4;
+        color: #{@styles.accept_button_text_color};
       }
       .eula-window_button.-eula-accept:hover {
         background-color: #{@styles.accept_button_color_hover};

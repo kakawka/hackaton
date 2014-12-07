@@ -1,4 +1,10 @@
 h1 My license agreements
+br
+= link_to new_license_agreement_path, :class => 'btn btn-info' do
+  span.fa.fa-plus
+  |&nbsp;New License agreement
+br
+br
 - unless @license_agreements.empty?
   table.table
     thead
@@ -16,10 +22,22 @@ h1 My license agreements
           td = license_agreement.name
           td = license_agreement.domain
           td = license_agreement.license_agreement_terms.size
-          td = link_to 'Show', license_agreement
-          td = link_to 'Edit', edit_license_agreement_path(license_agreement)
-          td = link_to 'Destroy', license_agreement, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-br
-
-= link_to 'New License agreement', new_license_agreement_path
+          td
+            = link_to license_agreement, :class => 'btn btn-info' do
+              span.fa.fa-eye
+              |&nbsp;Show
+          td
+            = link_to edit_license_agreement_path(license_agreement), :class => 'btn btn-info' do
+              span.fa.fa-edit
+              |&nbsp;Edit
+          td
+            = link_to license_agreement, data: {:confirm => 'Are you sure?'}, :method => :delete, :class => 'btn btn-primary' do
+              span.fa.fa-remove
+              |&nbsp;Destroy
+- else
+  br
+  br
+  .text-center
+    |You have no license agreements yet
+  br
+  br
