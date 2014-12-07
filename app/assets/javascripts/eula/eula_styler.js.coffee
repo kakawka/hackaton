@@ -16,7 +16,6 @@ class @EulaStyler
     if params
       for i of params
         @styles[i] = params[i]
-    console.log(params, @styles)
     @applyCss()
 
   setStyles: (newStyles) ->

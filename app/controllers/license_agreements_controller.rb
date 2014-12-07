@@ -30,6 +30,18 @@ class LicenseAgreementsController < ApplicationController
     redirect_to license_agreements_path unless !@license_agreement || @license_agreement.user_id == current_user.id
   end
 
+  def chart_ajax
+    @lat = params[:lat].to_i
+    @term_acceptance = TermAcceptance.where(license_agreement_term_id: @lat)
+    unless params["from"].blank?
+      @term_acceptance = @term_acceptance.where('DATE(created_at) >= ?', params["from"])
+    end
+    unless params["to"].blank?
+      @term_acceptance = @term_acceptance.where('DATE(created_at) <= ?', params["to"])
+    end
+    @term_acceptance = @term_acceptance.group_by_day(:created_at).count
+  end
+
   # GET /license_agreements/new
   def new
     @license_agreement = LicenseAgreement.new

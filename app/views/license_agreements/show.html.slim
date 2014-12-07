@@ -45,23 +45,23 @@ h3 License agreement terms
         br
         br
       .col-md-5
-        = form_tag("", method: :get, remote: true) do
+        = form_tag(chart_path, method: :get, remote: true) do
           .row
             .col-md-4
               = label_tag "From"
               br
-              = date_field_tag("from-#{lat.id}", params["from-#{lat.id}"])
+              = date_field_tag("from", params["from"])
             .col-md-4
               = label_tag "to"
               br
-              = date_field_tag("to-#{lat.id}", params["to-#{lat.id}"])
+              = date_field_tag("to", params["to"])
           .row
             .col-md-4
               br
               = hidden_field_tag :lat, lat.id
               = submit_tag "Submit", class: "btn btn-default"
-    div id = "linechart-#{lat.id}"
-      = line_chart @term_acceptance.group_by_day(:created_at).count
+    div id="linechart-#{lat.id}"
+      = line_chart @term_acceptance.group_by_day(:created_at).count, :id => "chart-detail-#{lat.id}"
 
 = link_to 'Edit', edit_license_agreement_path(@license_agreement)
 '|
