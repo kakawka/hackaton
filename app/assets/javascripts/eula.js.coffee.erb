@@ -3,14 +3,14 @@
 #= require eula/eula_window
 
 class @Eula
-  constructor: (user_id) ->
+  constructor: (user_id, styles) ->
     @domain = location.host
     @user_id = user_id
     if @user_id == ''
       @user_id = EulaHelper.getCookie('eula_uid')
     if @user_id == null
       @user_id = ''
-    @window = new EulaWindow(this)
+    @window = new EulaWindow(this, styles)
 
   load: (callback, scope) ->
     me = this

@@ -3,7 +3,6 @@ class WelcomeController < ApplicationController
   end
 
   def faq
-    @questions = Question.all
   end
 
   def docs

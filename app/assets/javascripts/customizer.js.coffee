@@ -16,6 +16,12 @@ class @Customizer
       me.styler.setStyles me.getStyleObject()
       true
 
+    $('.js-get-code').click (ev) ->
+      ev.preventDefault()
+      $('.js-code-content').find('code').html( "var eula = new Eula(user_id, \n" +  JSON.stringify(me.getStyleObject()).replace('{', "  {\n    ").replace(/\,/g, ",\n    ").replace('}', "\n  }") + "\n);")
+      $('.js-code-content').removeClass('hidden')
+      hljs.highlightBlock($('.js-code-content code')[0]);
+
   getStyleObject: () ->
     result =
       window_bg: '#' + $('.js-window-bg').val()
@@ -27,3 +33,6 @@ class @Customizer
       accept_button_color_hover: '#' + $('.js-accept-button-color-hover').val()
       decline_button_color: '#' + $('.js-decline-button-color').val()
       decline_button_color_hover: '#' + $('.js-decline-button-color-hover').val()
+      window_text_color: '#' + $('.js-window-text-color').val()
+      accept_button_text_color: '#' + $('.js-accept-text-color').val()
+      decline_button_text_color: '#' + $('.js-decline-text-color').val()

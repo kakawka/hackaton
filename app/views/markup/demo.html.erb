@@ -26,7 +26,9 @@
       var user_id = '';
 
       // Initialize service
-      var eula = new Eula(user_id);
+      // styles can be obtained via customization section or can be empty for default styles
+
+      var eula = new Eula(user_id, styles);
 
       // Set window show points
       // 'test' is license agreement part code

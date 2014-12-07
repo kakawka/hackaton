@@ -27,6 +27,6 @@ nav.navbar.navbar-default role="navigation"
           li class="#{ 'active' if controller.controller_name == 'license_agreements' }"
             = link_to  "My EULAs", license_agreements_path
           li
-            = link_to  "Profile", edit_user_registration_path
+            = link_to  "My account", edit_user_registration_path
           li
             = link_to "Sign out", destroy_user_session_path, method: :delete

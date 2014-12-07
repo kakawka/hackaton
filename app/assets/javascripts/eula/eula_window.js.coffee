@@ -1,5 +1,5 @@
 class @EulaWindow
-  constructor: (eulaObject) ->
+  constructor: (eulaObject, styles) ->
     @eulaObject = eulaObject
     @underlay = document.createElement('div')
     @window = document.createElement('div')
@@ -16,7 +16,7 @@ class @EulaWindow
     EulaHelper.addClass(@window, 'eula-window')
     document.body.appendChild(@underlay)
     document.body.appendChild(@window)
-    @styler = new EulaStyler()
+    @styler = new EulaStyler(styles)
 
   decline: () ->
     EulaHelper.removeClass(@window, '-eula-visible')

@@ -1,12 +1,56 @@
 h3 Frequently asked questions
 #accordion.panel-group
-  - @questions.each_with_index do |question, i|
-    .panel.panel-default
-      .panel-heading
-        h4.panel-title
-          a data-parent="#accordion" data-toggle="collapse" href="#collapse-#{question.id}"
-            - i += 1
-            = "#{i}. #{question.question}"
-      .panel-collapse.collapse id="collapse-#{question.id}"
-        .panel-body
-          = raw question.answer
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-parent="#accordion" data-toggle="collapse" href="#collapse-1"
+          |1. What is AcceptTheTerms?
+    .panel-collapse.collapse id="collapse-1"
+      .panel-body
+        p AcceptTheTerms is a hosting service for website's EULAs allowing you to easily integrate EULA to your site.
+
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-parent="#accordion" data-toggle="collapse" href="#collapse-2"
+          |2. Why AcceptTheTerms is better than standart EULA page?
+    .panel-collapse.collapse id="collapse-2"
+      .panel-body
+        p AcceptTheTerms alow you to force users to read the EULA terms. It's an interactive solution providing much more than just an EULA.
+
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-parent="#accordion" data-toggle="collapse" href="#collapse-3"
+          |3. How many sites can I add to my account?
+    .panel-collapse.collapse id="collapse-3"
+      .panel-body
+        p You can add an unlimited amount of websites for now. But this may change sometimes.
+
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-parent="#accordion" data-toggle="collapse" href="#collapse-4"
+          |4. Have you got any limitations?
+    .panel-collapse.collapse id="collapse-4"
+      .panel-body
+        p There are no limitations nowdays.
+
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-parent="#accordion" data-toggle="collapse" href="#collapse-5"
+          |5. Why did you build this service?
+    .panel-collapse.collapse id="collapse-5"
+      .panel-body
+        p We are really worry about EULA. Nobody reads this. But EULA is very important nowdays.
+        p We hope that our solution will help website owners.
+
+  .panel.panel-default
+    .panel-heading
+      h4.panel-title
+        a data-parent="#accordion" data-toggle="collapse" href="#collapse-6"
+          |6. Maybe some other reasons?
+    .panel-collapse.collapse id="collapse-6"
+      .panel-body
+        p Yes, we want to provide good solution for World's first global virtual hackathon.
