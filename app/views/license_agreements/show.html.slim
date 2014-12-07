@@ -16,7 +16,7 @@ h1 License agreement
         td User
         td = @license_agreement.user.name
   .col-md-8
-    / = line_chart @license_agreement.
+    = line_chart LicenseAgreementAcceptance.where(license_agreement_id: @license_agreement.id).group_by_day(:created_at).count
 h3 License agreement terms
 - @license_agreements_term.each do |lat|
   .well

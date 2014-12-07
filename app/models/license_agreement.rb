@@ -1,7 +1,7 @@
 class LicenseAgreement < ActiveRecord::Base
   belongs_to :user
   has_many :license_agreement_terms
-  has_many :lecense_agreement_acceptances
+  has_many :license_agreement_acceptances
   accepts_nested_attributes_for :license_agreement_terms, :reject_if => :all_blank
 
 

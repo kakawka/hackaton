@@ -1,4 +1,4 @@
 class LicenseAgreementAcceptance < ActiveRecord::Base
   belongs_to :visitor
-  belongs_to :linense_agreement
+  belongs_to :license_agreement
 end

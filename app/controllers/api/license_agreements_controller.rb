@@ -27,6 +27,9 @@ class Api::LicenseAgreementsController < ApplicationController
       )
     end
 
+    if TermAcceptance.where(visitor_id: visitor.id).count == @license_agreement.license_agreement_terms.count
+      LicenseAgreementAcceptance.create(license_agreement_id: @license_agreement.id, visitor_id: visitor.id, accepted: true)
+    end
     head :no_content
   end
 

@@ -2,7 +2,7 @@ require 'digest/md5'
 
 class Visitor < ActiveRecord::Base
   has_many :term_acceptances
-  has_many :lecense_agreement_acceptances
+  has_many :license_agreement_acceptances
   # validates :uid, presence: true
 
   def self.find_or_create(uid)
