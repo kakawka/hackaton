@@ -3,8 +3,8 @@
 #= require eula/eula_window
 
 class @Eula
-  constructor: (domain, user_id, id) ->
-    @domain = domain
+  constructor: (user_id) ->
+    @domain = location.host
     @user_id = user_id
     if @user_id == ''
       @user_id = EulaHelper.getCookie('eula_uid')

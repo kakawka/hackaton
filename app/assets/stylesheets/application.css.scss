@@ -1,3 +1,4 @@
+@import "highlight/solarized_light";
 @import "font-awesome";
 @import "medium-editor";
 @import "medium-editor-theme";
@@ -5,7 +6,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "jquery-ui";
-@import "color_changer";
 @import "pick-a-color-1.2.3.min";
 
 .navbar-brand {
@@ -26,12 +26,15 @@
 }
 
 .ufo {
-  position: absolute;
+  position: fixed;
   background: inline("ufo.png") no-repeat;
   width: image-width("ufo.png");
   height: image-height("ufo.png");
   top: 0;
   left: 0;
+  &.-frame2 {
+    background: inline("ufo2.png") no-repeat;
+  }
 }
 
 .benefits {
@@ -45,10 +48,15 @@
 .footer {
   background: $navbar-default-bg;
   padding: 80px 0 40px 0;
+  margin-top: 50px;
 }
 
 .jumbotron {
   h1 {
     color: $green;
   }
+}
+
+.inc-code {
+  margin-top: 20px;
 }

@@ -18,9 +18,11 @@ var ufoReady = function () {
     deltaX = Math.random() * 30,
     deltaY = Math.random() * 30,
     ufoDiv = $('.js-ufo'),
+    frame = 0,
     ufoFly = function () {
       x += deltaX;
       y += deltaY;
+      frame++;
       if (x + deltaX > maxX) {
         deltaX = - Math.random() * 30;
       }
@@ -37,6 +39,9 @@ var ufoReady = function () {
         top: y,
         left: x
       });
+      if (frame % 4 == 0) {
+        ufoDiv.toggleClass('-frame2');
+      }
     };
 
   window.ufoStart = function () {
