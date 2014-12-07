@@ -1,23 +1,24 @@
 h1 My license agreements
-
-table.table
-  thead
-    tr
-      th Name
-      th Domain
-      th Parts
-      th
-      th
-      th
-
-  tbody
-    - @license_agreements.each do |license_agreement|
+- unless @license_agreements.empty?
+  table.table
+    thead
       tr
-        td = license_agreement.name
-        td = license_agreement.domain
-        td = license_agreement.license_agreement_terms.size
-        td = link_to 'Edit', edit_license_agreement_path(license_agreement)
-        td = link_to 'Destroy', license_agreement, data: {:confirm => 'Are you sure?'}, :method => :delete
+        th Name
+        th Domain
+        th Parts
+        th
+        th
+        th
+
+    tbody
+      - @license_agreements.each do |license_agreement|
+        tr
+          td = license_agreement.name
+          td = license_agreement.domain
+          td = license_agreement.license_agreement_terms.size
+          td = link_to 'Show', license_agreement
+          td = link_to 'Edit', edit_license_agreement_path(license_agreement)
+          td = link_to 'Destroy', license_agreement, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
 

@@ -10,6 +10,8 @@ gem 'omniauth-facebook'
 gem 'bootstrap-sass'
 # gem 'medium-editor-rails'
 gem "cocoon"
+gem "chartkick"
+gem 'groupdate'
 gem "dogstatsd-ruby"
 gem 'font-awesome-rails'
 

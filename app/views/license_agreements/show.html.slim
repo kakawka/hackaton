@@ -1,22 +1,32 @@
 h1 License agreement
-p#notice = notice
 
-p
-  strong Name:
-  = @license_agreement.name
-p
-  strong Domain:
-  = @license_agreement.domain
-p
-  strong User:
-  = @license_agreement.user.name
+.row
+  .col-md-4
+    br
+    br
+    br
+    table.table
+      tr
+        td Name
+        td = @license_agreement.name
+      tr
+        td Domain
+        td = @license_agreement.domain
+      tr
+        td User
+        td = @license_agreement.user.name
+  .col-md-8
+    / = line_chart @license_agreement.
 h3 License agreement terms
 - @license_agreements_term.each do |lat|
-  h4 Text
-  = lat.text
-  h4 Code
-  = lat.code
-  hr
+  .well
+    h4 Text
+    = raw lat.text
+    h4 Code
+    = lat.code
+    br
+    br
+    = line_chart TermAcceptance.where(license_agreement_term_id: lat.id).group_by_day(:created_at).count
 = link_to 'Edit', edit_license_agreement_path(@license_agreement)
 '|
 = link_to 'Back', license_agreements_path
