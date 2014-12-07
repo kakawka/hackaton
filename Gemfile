@@ -14,6 +14,7 @@ gem "chartkick"
 gem 'groupdate'
 gem "dogstatsd-ruby"
 gem 'font-awesome-rails'
+gem 'highlightjs-rails', git: 'https://github.com/xchrisbailey/highlightjs-rails.git'
 
 # Use mysql as the database for Active Record
 gem 'mysql2'

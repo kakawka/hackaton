@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var eula = new Eula('localhost', '');
+  var eula = new Eula('');
 
   eula.show('STARTING', {
     accept: function () {
@@ -21,7 +21,7 @@ $(document).ready(function () {
     eula.show('INSTRUCTIONS', {
       accept: function () {
         ufoStart();
-        // me.next().removeClass('hidden');
+        $(me).next().removeClass('hidden');
       }
     });
   });

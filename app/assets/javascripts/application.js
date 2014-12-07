@@ -21,6 +21,7 @@
 //= require tinycolor-0.9.15.min
 //= require pick-a-color
 //= require customizer
+//= require highlight.pack
 //= require ufo
 
 var ready = function () {
@@ -39,6 +40,8 @@ var ready = function () {
       stickyToolbar: true
     });
   });
+
+  hljs.initHighlightingOnLoad();
 
   $(".js-agreement-form").submit(function(ev) {
     ev.preventDefault();

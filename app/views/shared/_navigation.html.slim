@@ -14,9 +14,7 @@ nav.navbar.navbar-default role="navigation"
         li class="#{ 'active' if current_page? faq_path }"
           = link_to "FAQ", faq_path
         li class="#{ 'active' if current_page? demo_path }"
-          = link_to 'Demo', demo_path
-        li
-          = link_to 'Documentation', documentation_path
+          = link_to 'Demo & Docs', demo_path
         li class="#{ 'active' if current_page? customization_path }"
           = link_to 'Customization', customization_path
       ul.nav.navbar-nav.navbar-right
@@ -27,7 +25,7 @@ nav.navbar.navbar-default role="navigation"
             = link_to 'Sign Up', new_registration_path('user')
         - else
           li class="#{ 'active' if controller.controller_name == 'license_agreements' }"
-            = link_to  "My EULA", license_agreements_path
+            = link_to  "My EULAs", license_agreements_path
           li
             = link_to  "Profile", edit_user_registration_path
           li
