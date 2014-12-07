@@ -11,6 +11,22 @@ class LicenseAgreementsController < ApplicationController
   # GET /license_agreements/1.json
   def show
     @license_agreements_term = @license_agreement.license_agreement_terms.order('sort')
+    @main_line_chart = LicenseAgreementAcceptance.where(license_agreement_id: @license_agreement.id).group_by_day(:created_at).count
+    unless params[:from].blank?
+      @main_line_chart = LicenseAgreementAcceptance.where('DATE(created_at) >= ?', params[:from]).where(license_agreement_id: @license_agreement.id).group_by_day(:created_at).count
+    end
+    unless params[:to].blank?
+      @main_line_chart = LicenseAgreementAcceptance.where('DATE(created_at) <= ?', params[:to]).where(license_agreement_id: @license_agreement.id).group_by_day(:created_at).count
+    end
+    @lat = params[:lat].to_i
+    @term_acceptance = TermAcceptance.where(license_agreement_term_id: @lat)
+    unless params["from-#{@lat}"].blank?
+      @term_acceptance = @term_acceptance.where('DATE(created_at) >= ?', params["from-#{@lat}"])
+    end
+    unless params["to-#{@lat}"].blank?
+      @term_acceptance = @term_acceptance.where('DATE(created_at) <= ?', params["to-#{@lat}"])
+    end
+    @term_acceptance = @term_acceptance.group_by_day(:created_at).count
     redirect_to license_agreements_path unless !@license_agreement || @license_agreement.user_id == current_user.id
   end
 

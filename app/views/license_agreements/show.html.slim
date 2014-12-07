@@ -16,17 +16,53 @@ h1 License agreement
         td User
         td = @license_agreement.user.name
   .col-md-8
-    = line_chart LicenseAgreementAcceptance.where(license_agreement_id: @license_agreement.id).group_by_day(:created_at).count
+    = form_tag("", method: :get, remote: true) do
+      .row
+        .col-md-3.col-md-offset-3
+          = label_tag "From"
+          br
+          = date_field_tag(:from, params[:from])
+        .col-md-3
+          = label_tag "to"
+          br
+          = date_field_tag(:to, params[:to])
+      .row
+        .col-md-3.col-md-offset-3
+          br
+          = submit_tag "Submit", class: "btn btn-default"
+    #main_line_chart
+      = line_chart @main_line_chart
 h3 License agreement terms
 - @license_agreements_term.each do |lat|
+  - @term_acceptance = TermAcceptance.where(license_agreement_term_id: lat.id)
   .well
-    h4 Text
-    = raw lat.text
-    h4 Code
-    = lat.code
-    br
-    br
-    = line_chart TermAcceptance.where(license_agreement_term_id: lat.id).group_by_day(:created_at).count
+    .row
+      .col-md-7
+        h4 Text
+        = raw lat.text
+        h4 Code
+        = lat.code
+        br
+        br
+      .col-md-5
+        = form_tag("", method: :get, remote: true) do
+          .row
+            .col-md-4
+              = label_tag "From"
+              br
+              = date_field_tag("from-#{lat.id}", params["from-#{lat.id}"])
+            .col-md-4
+              = label_tag "to"
+              br
+              = date_field_tag("to-#{lat.id}", params["to-#{lat.id}"])
+          .row
+            .col-md-4
+              br
+              = hidden_field_tag :lat, lat.id
+              = submit_tag "Submit", class: "btn btn-default"
+    div id = "linechart-#{lat.id}"
+      = line_chart @term_acceptance.group_by_day(:created_at).count
+
 = link_to 'Edit', edit_license_agreement_path(@license_agreement)
 '|
 = link_to 'Back', license_agreements_path
