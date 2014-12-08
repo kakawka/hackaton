@@ -12,7 +12,7 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
-  config.omniauth :facebook, "379742095524269", "9ada1136acc4179bc9985ada68878bb5"
+  config.omniauth :facebook, "299589863571126", "f444a7571755902ce9afd213a2a2554e"
   config.omniauth :twitter, "4xrW70MFssV5L8DZ4UWz9mMWP", "pOgJkk04CXZrhLY7hgXy6LjaEhjtfMyE4jh4UulsYdD1ot4AdC"
 
   # Configure the class responsible to send e-mails.
