@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations", }
 
   get '/agreements/chart' => 'license_agreements#chart_ajax', :as => :chart
+  get '/agreements/main_chart/:id' => 'license_agreements#main_chart', :as => :main_chart
   get '/demo' => 'markup#demo', :as => :demo
   get '/docs' => 'welcome#docs', :as => :documentation
   get '/color_changer' => 'welcome#color_changer', :as => :customization

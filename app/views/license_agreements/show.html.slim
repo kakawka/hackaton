@@ -16,7 +16,7 @@ h1 License agreement
         td User
         td = @license_agreement.user.name
   .col-md-8
-    = form_tag("", method: :get, remote: true) do
+    = form_tag(main_chart_path(@license_agreement), method: :get, remote: true) do
       .row
         .col-md-3.col-md-offset-3
           = label_tag "From"
@@ -35,6 +35,7 @@ h1 License agreement
 h3 License agreement terms
 - @license_agreements_term.each do |lat|
   - @term_acceptance = TermAcceptance.where(license_agreement_term_id: lat.id)
+  - @term_acceptance = @term_acceptance.where('DATE(created_at) >= ?', Time.now - 14.days) if params[:from].blank?
   .well
     .row
       .col-md-7

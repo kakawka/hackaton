@@ -1,5 +1,5 @@
 class LicenseAgreementsController < ApplicationController
-  before_action :set_license_agreement, only: [:show, :edit, :update, :destroy]
+  before_action :set_license_agreement, only: [:show, :edit, :update, :destroy, :main_chart]
 
   # GET /license_agreements
   # GET /license_agreements.json
@@ -11,28 +11,24 @@ class LicenseAgreementsController < ApplicationController
   # GET /license_agreements/1.json
   def show
     @license_agreements_term = @license_agreement.license_agreement_terms.order('sort')
-    @main_line_chart = LicenseAgreementAcceptance.where(license_agreement_id: @license_agreement.id).group_by_day(:created_at).count
-    unless params[:from].blank?
-      @main_line_chart = LicenseAgreementAcceptance.where('DATE(created_at) >= ?', params[:from]).where(license_agreement_id: @license_agreement.id).group_by_day(:created_at).count
-    end
-    unless params[:to].blank?
-      @main_line_chart = LicenseAgreementAcceptance.where('DATE(created_at) <= ?', params[:to]).where(license_agreement_id: @license_agreement.id).group_by_day(:created_at).count
-    end
-    @lat = params[:lat].to_i
-    @term_acceptance = TermAcceptance.where(license_agreement_term_id: @lat)
-    unless params["from-#{@lat}"].blank?
-      @term_acceptance = @term_acceptance.where('DATE(created_at) >= ?', params["from-#{@lat}"])
-    end
-    unless params["to-#{@lat}"].blank?
-      @term_acceptance = @term_acceptance.where('DATE(created_at) <= ?', params["to-#{@lat}"])
-    end
-    @term_acceptance = @term_acceptance.group_by_day(:created_at).count
+    @main_line_chart = LicenseAgreementAcceptance.where(license_agreement_id: @license_agreement.id)
+      .where('DATE(created_at) >= ?', Time.now - 14.days).group_by_day(:created_at).count
+    # @lat = params[:lat].to_i
+    # @term_acceptance = TermAcceptance.where(license_agreement_term_id: @lat)
+    # unless params["from-#{@lat}"].blank?
+    #   @term_acceptance = @term_acceptance.where('DATE(created_at) >= ?', params["from-#{@lat}"])
+    # end
+    # unless params["to-#{@lat}"].blank?
+    #   @term_acceptance = @term_acceptance.where('DATE(created_at) <= ?', params["to-#{@lat}"])
+    # end
+    # @term_acceptance = @term_acceptance.group_by_day(:created_at).count
     redirect_to license_agreements_path unless !@license_agreement || @license_agreement.user_id == current_user.id
   end
 
   def chart_ajax
     @lat = params[:lat].to_i
     @term_acceptance = TermAcceptance.where(license_agreement_term_id: @lat)
+    @term_acceptance = @term_acceptance.where('DATE(created_at) >= ?', Time.now - 14.days) if params[:from].blank?
     unless params["from"].blank?
       @term_acceptance = @term_acceptance.where('DATE(created_at) >= ?', params["from"])
     end
@@ -40,6 +36,18 @@ class LicenseAgreementsController < ApplicationController
       @term_acceptance = @term_acceptance.where('DATE(created_at) <= ?', params["to"])
     end
     @term_acceptance = @term_acceptance.group_by_day(:created_at).count
+  end
+
+  def main_chart
+    @main_line_chart = LicenseAgreementAcceptance.where(license_agreement_id: @license_agreement.id)
+    @main_line_chart = @main_line_chart.where('DATE(created_at) >= ?', Time.now - 14.days) if params[:from].blank?
+    @main_line_chart = @main_line_chart.group_by_day(:created_at).count
+    unless params[:from].blank?
+      @main_line_chart = LicenseAgreementAcceptance.where('DATE(created_at) >= ?', params[:from]).where(license_agreement_id: @license_agreement.id).group_by_day(:created_at).count
+    end
+    unless params[:to].blank?
+      @main_line_chart = LicenseAgreementAcceptance.where('DATE(created_at) <= ?', params[:to]).where(license_agreement_id: @license_agreement.id).group_by_day(:created_at).count
+    end
   end
 
   # GET /license_agreements/new
