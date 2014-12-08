@@ -51,9 +51,11 @@
 
       // Also you can check that current user has previously accepted some parts of EULA
       // 'INSTRUCTION' is license agreement part code
-      // function is the callback to be called if user has this part accepted
-      eula.isAccepted('INSTRUCTIONS', function () {
-        ufoStart();
+      // function is the callback to be called when all data recieved from our server
+      eula.isAccepted('INSTRUCTIONS', function (accepted) {
+        if (accepted) {
+          ufoStart();
+        }
       });
     });"
   </code>
